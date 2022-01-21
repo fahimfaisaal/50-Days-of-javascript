@@ -1,17 +1,17 @@
 /**
- * @param {number} n 
- * @returns {number}
+ * @param {number} position 
+ * @returns {string}
  */
-function fibonacci(n) {
-    // write your solution here
-    const fibonacci = [1, 1]
+function fibonacci(position) {
+    let firstDigit = 0n;
+    let secondDigit = 1n;
 
-    for (let i = 2; i < n; i++) {
-        fibonacci[2] = fibonacci[1] + fibonacci[0];
-        fibonacci.shift()
+    for (let i = 1; i < position; i++) {
+        const sumOfNumbers = firstDigit + secondDigit;
+        [firstDigit, secondDigit] = [secondDigit, sumOfNumbers];
     }
-
-    return n < 3 ? fibonacci[n - 1] : fibonacci[1]
+  
+  return String(position ? secondDigit : firstDigit);
 }
 
-console.log(`fibonacci value at position 5: ${fibonacci(7)}`)
+console.log(`fibonacci value at position 5: ${fibonacci(5)}`)
